@@ -219,8 +219,6 @@
                 }));
             });
 
-            console.log(results);
-
             return results.every(result => !result.isError);
         }
     };
