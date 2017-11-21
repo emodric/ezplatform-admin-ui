@@ -48,6 +48,10 @@
 
     validator.init();
 
+    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+        [...global.eZ.fieldTypeValidators, validator] :
+        [validator];
+
     const timeFields = [...document.querySelectorAll(SELECTOR_FIELD)];
     const timeConfig = {
         enableTime: true,

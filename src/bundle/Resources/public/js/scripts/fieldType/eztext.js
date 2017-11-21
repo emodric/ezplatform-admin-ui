@@ -37,4 +37,8 @@
     });
 
     validator.init();
+
+    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+        [...global.eZ.fieldTypeValidators, validator] :
+        [validator];
 })(window);

@@ -44,6 +44,10 @@
 
     validator.init();
 
+    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+        [...global.eZ.fieldTypeValidators, validator] :
+        [validator];
+
     [...doc.querySelectorAll(SELECTOR_FIELD)].forEach(container => {
         const createSelectedItem = (value, label) => `<li class="selected-item" data-value="${value}">${label}<span class="remove-selection"></span></li>`;
         const handleSelection = (element, selected) => {

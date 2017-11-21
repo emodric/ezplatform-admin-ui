@@ -168,7 +168,7 @@
         findExistingErrorNodes(fieldNode, input, selectors) {
             return selectors.reduce((total, selector) => total.concat([...input.closest(SELECTOR_AUTHOR).querySelectorAll(selector)]), []);
         }
-    };
+    }
 
     const validator = new EzAuthorValidator({
         classInvalid: 'is-invalid',
@@ -189,11 +189,13 @@
                 errorNodeSelectors: ['.ez-data-source__field--email .ez-data-source__label-wrapper'],
             },
             {
+                isValueValidator: false,
                 selector: SELECTOR_REMOVE_AUTHOR,
                 eventName: 'click',
                 callback: 'removeItem',
             },
             {
+                isValueValidator: false,
                 selector: '.ez-btn--add-author',
                 eventName: 'click',
                 callback: 'addItem',
@@ -202,4 +204,8 @@
     });
 
     validator.init();
+
+    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+        [...global.eZ.fieldTypeValidators, validator] :
+        [validator];
 })(window, document);

@@ -57,6 +57,7 @@
                     errorNodeSelectors: [SELECTOR_LABEL_WRAPPER],
                 },
                 {
+                    isValueValidator: false,
                     selector: `${SELECTOR_FIELD} ${SELECTOR_INPUT_FILE}`,
                     eventName: 'invalidFileSize',
                     callback: 'showSizeError',
@@ -72,5 +73,9 @@
         });
 
         previewField.init();
+
+        global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+            [...global.eZ.fieldTypeValidators, validator] :
+            [validator];
     })
 })(window);

@@ -120,7 +120,9 @@
         checkFileSize(event) {
             const file = [...event.currentTarget.files][0];
 
-            if (this.maxFileSize !== 0 && file.size > this.maxFileSize) {
+            console.log('checkFileSize', file, this.maxFileSize);
+
+            if (file && this.maxFileSize !== 0 && file.size > this.maxFileSize) {
                 return this.showFileSizeError();
             }
 

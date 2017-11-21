@@ -15,7 +15,8 @@
             const label = this.fieldContainer.querySelector(SELECTOR_FIELD_LABEL).innerHTML;
             const result = { isError: false };
 
-            if (input.required && !input.files.length) {
+            if (input.required && !input.files.length && !input.closest('.ez-field-edit__data').classList.contains('ez-visually-hidden')) {
+                result.isError = true;
                 result.errorMessage = global.eZ.errors.emptyField.replace('{fieldName}', label);
             }
 

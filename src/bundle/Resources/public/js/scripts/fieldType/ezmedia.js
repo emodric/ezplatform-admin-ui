@@ -127,10 +127,12 @@
                     invalidStateSelectors: [SELECTOR_FIELD],
                     errorNodeSelectors: ['.ez-field-edit__label-wrapper'],
                 }, {
+                    isValueValidator: false,
                     selector: '.ez-field-edit-preview__info',
                     eventName: 'click',
                     callback: 'updateState',
                 }, {
+                    isValueValidator: false,
                     selector: '[type="file"]',
                     eventName: 'invalidFileSize',
                     callback: 'showSizeError',
@@ -146,5 +148,9 @@
         });
 
         previewField.init();
+
+        global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+            [...global.eZ.fieldTypeValidators, validator] :
+            [validator];
     })
 })(window);

@@ -48,6 +48,10 @@
 
     validator.init();
 
+    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ?
+        [...global.eZ.fieldTypeValidators, validator] :
+        [validator];
+
     const dateFields = [...document.querySelectorAll(SELECTOR_FIELD)];
     const dateConfig = {
         formatDate: (date) => (new Date(date)).toLocaleDateString()
