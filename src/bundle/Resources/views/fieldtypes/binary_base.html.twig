@@ -44,27 +44,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block binary_base_preview_info_checkbox_row %}
-    <div class="ez-field-edit-preview__info ez-field-edit-preview__info--{{ form.vars.name }}">
-        <div class="ez-field-edit-preview__input-wrapper">
-            <label class="ez-data-source__label">
-                <span class="ez-data-source__indicator"></span>
-                <input type="checkbox" {{ block('widget_attributes') }}{% if form.vars.value is defined %} value="{{ form.vars.value }}"{% endif %}{% if form.vars.checked %} checked="checked"{% endif %}>
-            </label>
-            <span class="ez-data-source__label-text">{{ form.vars.translation_domain is same as(false) ? form.vars.label : form.vars.label|trans({}, form.vars.translation_domain) }}</span>
-        </div>
-    </div>
-{% endblock %}
-
-{% block binary_base_preview_info_simple_row %}
-    <div class="ez-field-edit-preview__info ez-field-edit-preview__info--{{ form.vars.name }}">
-        <div class="ez-field-edit-preview__label-wrapper">
-            {{ form_label(form, null, {'label_attr': {'class': 'ez-field-edit-preview__label'}}) }}
-            {% with {'form': form} %}{{ block('form_errors') }}{% endwith %}
-        </div>
-        <div class="ez-field-edit-preview__input-wrapper">
-            {{ form_widget(form, {'attr': {'class': 'ez-field-edit-preview__input'}}) }}
-        </div>
-    </div>
-{% endblock %}
